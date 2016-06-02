@@ -43,7 +43,7 @@ IF (MONEDA = 1) THEN
         LOOP
             DBMS_OUTPUT.put_line('ENTRE EN QUETZALES');
             IF (PAGO > 0 ) THEN
-                IF (Iteracion.FECHA_VENCIMIENTO <= FECHA_LIMITE AND Iteracion.MONEDA = 1) THEN
+                IF (Iteracion.FECHA_VENCIMIENTO <= FECHA_LIMITE AND Iteracion.MONEDA = 1 AND Iteracion.SALDO != 0) THEN
                     DBMS_OUTPUT.put_line('ENTRE A PAGO > 0 Y TOCA PAGAR Q');
                     DBMS_OUTPUT.put_line('Soy Menor que tu fecha y entre en Quetzales');
                     IF (PAGO <= Iteracion.SALDO) THEN
@@ -81,7 +81,7 @@ IF (MONEDA = 1) THEN
                 END IF;
 
                 
-                IF (Iteracion.FECHA_VENCIMIENTO <= FECHA_LIMITE AND Iteracion.MONEDA = 2) THEN
+                IF (Iteracion.FECHA_VENCIMIENTO <= FECHA_LIMITE AND Iteracion.MONEDA = 2 AND Iteracion.SALDO != 0) THEN
                     IF (CONT = 0) THEN
                         DBMS_OUTPUT.put_line('LOS Q. ' || PAGO);
                         PAGO := PAGO / TIPO_CAMBIO;
@@ -140,7 +140,7 @@ IF (MONEDA = 2) THEN
         DBMS_OUTPUT.put_line(FECHA_LIMITE);
         DBMS_OUTPUT.put_line('ENTRE EN DOLARES');
         IF (PAGO > 0 ) THEN
-            IF (Iteracion.FECHA_VENCIMIENTO <= FECHA_LIMITE AND Iteracion.MONEDA = 2) THEN
+            IF (Iteracion.FECHA_VENCIMIENTO <= FECHA_LIMITE AND Iteracion.MONEDA = 2 AND Iteracion.SALDO != 0) THEN
                 DBMS_OUTPUT.put_line('ENTRE A PAGO > 0 Y TOCA PAGAR $');
                 DBMS_OUTPUT.put_line('Soy Menor que tu fecha y entre en Dolares');
                 IF (PAGO <= Iteracion.SALDO) THEN
@@ -179,7 +179,7 @@ IF (MONEDA = 2) THEN
             END IF;
 
             
-            IF (Iteracion.FECHA_VENCIMIENTO <= FECHA_LIMITE AND Iteracion.MONEDA = 1) THEN
+            IF (Iteracion.FECHA_VENCIMIENTO <= FECHA_LIMITE AND Iteracion.MONEDA = 1 AND Iteracion.SALDO != 0) THEN
                 IF (CONT = 0) THEN
                     DBMS_OUTPUT.put_line('LOS $. ' || PAGO);
                     PAGO := PAGO * TIPO_CAMBIO;
